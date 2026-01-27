@@ -3,643 +3,97 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Michael - Web Developer Portfolio</title>
+    <title>Michael - Web Developer</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <!-- Link to the enhanced CSS file -->
-    <link rel="stylesheet" href="simple-style.css" />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      :root {
-        --primary: #667eea;
-        --secondary: #764ba2;
-        --dark: #1a1a2e;
-        --light: #f8f9fa;
-        --accent: #00d4ff;
-      }
-
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        line-height: 1.6;
-        color: var(--dark);
-        overflow-x: hidden;
-      }
-
-      /* Smooth Scrolling */
-      html {
-        scroll-behavior: smooth;
-      }
-
-      /* Navigation */
-      nav {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgba(26, 26, 46, 0.95);
-        backdrop-filter: blur(10px);
-        padding: 1rem 0;
-        z-index: 1000;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-      }
-
-      .nav-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0 2rem;
-      }
-
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: white;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .nav-links {
-        display: flex;
-        gap: 2rem;
-        list-style: none;
-      }
-
-      .nav-links a {
-        color: white;
-        text-decoration: none;
-        transition: color 0.3s;
-        font-weight: 500;
-      }
-
-      .nav-links a:hover {
-        color: var(--accent);
-      }
-
-      /* Hero Section */
-      .hero {
-        min-height: 100vh;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        color: white;
-        padding: 2rem;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect width="100" height="100" fill="none"/><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-        opacity: 0.3;
-      }
-
-      .hero-content {
-        max-width: 800px;
-        z-index: 1;
-        animation: fadeInUp 1s ease-out;
-      }
-
-      .profile-picture {
-        width: 200px;
-        height: 200px;
-        margin: 0 auto 2rem;
-        position: relative;
-        border-radius: 50%;
-        overflow: hidden;
-        border: 5px solid white;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        cursor: pointer;
-      }
-
-      .profile-picture img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .edit-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.7);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        opacity: 0;
-        transition: opacity 0.3s;
-      }
-
-      .profile-picture:hover .edit-overlay {
-        opacity: 1;
-      }
-
-      .edit-overlay i {
-        font-size: 2rem;
-        color: white;
-        margin-bottom: 0.5rem;
-      }
-
-      .edit-overlay p {
-        color: white;
-        font-size: 0.9rem;
-        margin: 0;
-      }
-
-      @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      .hero h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      }
-
-      .hero .subtitle {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        opacity: 0.9;
-      }
-
-      .hero p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        line-height: 1.8;
-        opacity: 0.95;
-      }
-
-      .cta-buttons {
-        display: flex;
-        gap: 1rem;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      .btn {
-        padding: 1rem 2rem;
-        border: none;
-        border-radius: 50px;
-        cursor: pointer;
-        font-size: 1rem;
-        font-weight: 600;
-        transition: all 0.3s;
-        text-decoration: none;
-        display: inline-block;
-      }
-
-      .btn-primary {
-        background: white;
-        color: var(--primary);
-      }
-
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-      }
-
-      .btn-outline {
-        background: transparent;
-        color: white;
-        border: 2px solid white;
-      }
-
-      .btn-outline:hover {
-        background: white;
-        color: var(--primary);
-      }
-
-      /* Section Styles */
-      section {
-        padding: 5rem 2rem;
-      }
-
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        position: relative;
-        display: inline-block;
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        border-radius: 2px;
-      }
-
-      /* About Section */
-      .about {
-        background: var(--light);
-      }
-
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 3rem;
-        align-items: center;
-      }
-
-      .about-text h3 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-        font-size: 1.8rem;
-      }
-
-      .about-text p {
-        margin-bottom: 1rem;
-        line-height: 1.8;
-      }
-
-      .stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-      }
-
-      .stat-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        text-align: center;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s;
-      }
-
-      .stat-card:hover {
-        transform: translateY(-5px);
-      }
-
-      .stat-card h3 {
-        font-size: 2.5rem;
-        color: var(--primary);
-        margin-bottom: 0.5rem;
-      }
-
-      .stat-card p {
-        color: #666;
-        font-size: 1rem;
-      }
-
-      /* Skills Section */
-      .skills {
-        background: white;
-      }
-
-      .skills-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        gap: 2rem;
-      }
-
-      .skill-card {
-        background: var(--light);
-        padding: 2rem;
-        border-radius: 15px;
-        text-align: center;
-        transition: all 0.3s;
-        border: 2px solid transparent;
-      }
-
-      .skill-card:hover {
-        transform: translateY(-10px);
-        border-color: var(--primary);
-        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
-      }
-
-      .skill-card i {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-      }
-
-      .skill-card h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.5rem;
-        color: var(--dark);
-      }
-
-      .skill-level {
-        color: #666;
-        font-size: 0.85rem;
-      }
-
-      .learning-badge {
-        display: inline-block;
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: white;
-        padding: 0.3rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.75rem;
-        font-weight: 600;
-      }
-
-      /* Projects Section */
-      .projects {
-        background: var(--light);
-      }
-
-      .projects-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2.5rem;
-      }
-
-      .project-card {
-        background: white;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s;
-      }
-
-      .project-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-      }
-
-      .project-image {
-        height: 250px;
-        background-size: cover !important;
-        background-position: center !important;
-      }
-
-      .project-content {
-        padding: 2rem;
-      }
-
-      .project-content h3 {
-        font-size: 1.5rem;
-        margin-bottom: 1rem;
-        color: var(--dark);
-      }
-
-      .project-content p {
-        color: #666;
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-      }
-
-      .tech-stack {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .tech-tag {
-        background: var(--light);
-        color: var(--primary);
-        padding: 0.4rem 0.8rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 600;
-      }
-
-      .project-links {
-        display: flex;
-        gap: 1rem;
-      }
-
-      .btn-project-primary,
-      .btn-project-secondary {
-        flex: 1;
-        padding: 0.8rem 1.5rem;
-        border-radius: 10px;
-        text-decoration: none;
-        font-weight: 600;
-        text-align: center;
-        transition: all 0.3s;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-      }
-
-      .btn-project-primary {
-        background: linear-gradient(135deg, var(--primary), var(--accent));
-        color: white;
-      }
-
-      .btn-project-primary:hover {
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-      }
-
-      .btn-project-secondary {
-        background: transparent;
-        color: var(--primary);
-        border: 2px solid var(--primary);
-      }
-
-      .btn-project-secondary:hover {
-        background: var(--primary);
-        color: white;
-      }
-
-      /* Contact Section */
-      .contact {
-        background: linear-gradient(135deg, var(--primary), var(--secondary));
-        color: white;
-      }
-
-      .contact-content {
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-      }
-
-      .contact-content h2 {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-      }
-
-      .contact-content > p {
-        font-size: 1.1rem;
-        margin-bottom: 3rem;
-        opacity: 0.95;
-        line-height: 1.8;
-      }
-
-      .contact-info {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 2rem;
-        margin-bottom: 3rem;
-      }
-
-      .contact-item {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        background: rgba(255, 255, 255, 0.1);
-        padding: 1.5rem;
-        border-radius: 15px;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s;
-      }
-
-      .contact-item:hover {
-        background: rgba(255, 255, 255, 0.2);
-        transform: translateY(-5px);
-      }
-
-      .contact-item i {
-        font-size: 1.5rem;
-      }
-
-      .contact-item a {
-        color: white;
-        text-decoration: none;
-      }
-
-      .contact-item a:hover {
-        text-decoration: underline;
-      }
-
-      .social-links {
-        display: flex;
-        gap: 1.5rem;
-        justify-content: center;
-      }
-
-      .social-links a {
-        width: 60px;
-        height: 60px;
-        background: rgba(255, 255, 255, 0.1);
-        backdrop-filter: blur(10px);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 1.5rem;
-        transition: all 0.3s;
-        text-decoration: none;
-      }
-
-      .social-links a:hover {
-        background: white;
-        transform: scale(1.1) rotate(5deg);
-      }
-
-      .social-links a.whatsapp:hover {
-        color: #25d366;
-      }
-
-      .social-links a.email:hover {
-        color: var(--primary);
-      }
-
-      .social-links a.github:hover {
-        color: #333;
-      }
-
-      /* Footer */
-      footer {
-        background: var(--dark);
-        color: white;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      footer p {
-        margin: 0;
-        opacity: 0.8;
-      }
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Navigation -->
-    <nav>
+    <nav class="navbar">
       <div class="nav-container">
-        <div class="logo">Michael.</div>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <div class="logo">Michael<span class="dot">.</span></div>
+        <button class="menu-toggle" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home" class="nav-link">Home</a></li>
+          <li><a href="#about" class="nav-link">About</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-      <div class="hero-content">
-        <div class="profile-picture">
-          <img
-            id="profileImg"
-            src="https://via.placeholder.com/200"
-            alt="Michael's Profile Picture"
-          />
-          <div
-            class="edit-overlay"
-            onclick="document.getElementById('fileInput').click()"
-          >
-            <i class="fas fa-camera"></i>
-            <p>Click to change</p>
+      <div class="hero-container">
+        <div class="hero-content">
+          <h3 class="hero-greeting">Hello, I'm</h3>
+          <h1 class="hero-name">Michael</h1>
+          <h2 class="hero-title">Aspiring Web Developer</h2>
+          <p class="hero-description">
+            I build beautiful, responsive websites and web applications.
+            Currently learning and growing as a developer while seeking remote
+            opportunities.
+          </p>
+          <div class="hero-buttons">
+            <a href="#projects" class="btn btn-primary">View My Work</a>
+            <a href="#contact" class="btn btn-outline">Get In Touch</a>
           </div>
-          <input
-            type="file"
-            id="fileInput"
-            accept="image/*"
-            style="display: none"
-          />
+          <div class="social-links-hero">
+            <a
+              href="https://github.com/michael-dotcom-max"
+              target="_blank"
+              title="GitHub"
+            >
+              <i class="fab fa-github"></i>
+            </a>
+            <a
+              href="https://wa.me/2348156748967"
+              target="_blank"
+              title="WhatsApp"
+            >
+              <i class="fab fa-whatsapp"></i>
+            </a>
+            <a href="mailto:michaeluwa09@gmail.com" title="Email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
         </div>
-        <h1>Hi, I'm Michael</h1>
-        <p class="subtitle">Aspiring Web Developer & Student</p>
-        <p>
-          I'm a passionate web development student building projects and seeking
-          remote opportunities. Currently learning modern web technologies while
-          working on real-world applications.
-        </p>
-        <div class="cta-buttons">
-          <a href="#projects" class="btn btn-primary">View My Work</a>
-          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        <div class="hero-image">
+          <div class="image-container">
+            <div class="image-background"></div>
+            <img
+              src="https://ui-avatars.com/api/?name=Michael&size=400&background=667eea&color=fff&bold=true"
+              alt="Michael"
+              id="profileImg"
+              title="Click to change profile picture"
+            />
+            <div class="profile-overlay" id="profileOverlay">
+              <div class="overlay-content">
+                <i class="fas fa-camera"></i>
+                <span>Change Photo</span>
+              </div>
+            </div>
+            <button
+              class="profile-remove-btn"
+              id="removeBtn"
+              style="display: none"
+              title="Remove Profile Picture"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+            <input
+              type="file"
+              id="fileInput"
+              accept="image/*"
+              style="display: none"
+            />
+          </div>
         </div>
       </div>
     </section>
@@ -647,14 +101,18 @@
     <!-- About Section -->
     <section class="about" id="about">
       <div class="container">
-        <h2 class="section-title">About Me</h2>
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">Get to know me better</p>
+        </div>
+
         <div class="about-content">
           <div class="about-text">
-            <h3>Student & Aspiring Developer</h3>
+            <h3>Student & Web Developer</h3>
             <p>
-              I'm currently pursuing my education while actively building my web
-              development skills. I'm passionate about creating user-friendly
-              websites and always eager to learn new technologies.
+              I'm a passionate web developer and student, actively building my
+              skills in modern web technologies. I love creating user-friendly,
+              responsive websites that solve real problems.
             </p>
             <p>
               I'm seeking remote opportunities to gain real-world experience,
@@ -662,21 +120,37 @@
               journey. I'm dedicated, quick to learn, and ready to bring fresh
               ideas to your team.
             </p>
+
+            <div class="quick-facts">
+              <div class="fact">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Available for Remote Work</span>
+              </div>
+              <div class="fact">
+                <i class="fas fa-clock"></i>
+                <span>Flexible Hours</span>
+              </div>
+              <div class="fact">
+                <i class="fas fa-graduation-cap"></i>
+                <span>Continuous Learner</span>
+              </div>
+            </div>
           </div>
-          <div class="stats-grid">
-            <div class="stat-card">
+
+          <div class="stats-container">
+            <div class="stat-box">
               <h3>2+</h3>
               <p>Projects Completed</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-box">
               <h3>100%</h3>
               <p>Dedication</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-box">
               <h3>24/7</h3>
               <p>Available Online</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-box">
               <h3>∞</h3>
               <p>Willingness to Learn</p>
             </div>
@@ -688,47 +162,77 @@
     <!-- Skills Section -->
     <section class="skills" id="skills">
       <div class="container">
-        <h2 class="section-title">My Skills</h2>
+        <div class="section-header">
+          <h2 class="section-title">My Skills</h2>
+          <p class="section-subtitle">Technologies I work with</p>
+        </div>
+
         <div class="skills-grid">
-          <div class="skill-card">
-            <i class="fab fa-html5"></i>
+          <div class="skill-box">
+            <div class="skill-icon">
+              <i class="fab fa-html5"></i>
+            </div>
             <h3>HTML5</h3>
-            <p class="skill-level">Proficient</p>
+            <p>Semantic markup & accessibility</p>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 90%"></div>
+            </div>
           </div>
-          <div class="skill-card">
-            <i class="fab fa-css3-alt"></i>
+
+          <div class="skill-box">
+            <div class="skill-icon">
+              <i class="fab fa-css3-alt"></i>
+            </div>
             <h3>CSS3</h3>
-            <p class="skill-level">Proficient</p>
+            <p>Modern styling & animations</p>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 85%"></div>
+            </div>
           </div>
-          <div class="skill-card">
-            <i class="fab fa-js"></i>
+
+          <div class="skill-box">
+            <div class="skill-icon">
+              <i class="fab fa-js"></i>
+            </div>
             <h3>JavaScript</h3>
-            <p class="skill-level">Proficient</p>
+            <p>ES6+ & DOM manipulation</p>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 80%"></div>
+            </div>
           </div>
-          <div class="skill-card">
-            <i class="fab fa-react"></i>
+
+          <div class="skill-box">
+            <div class="skill-icon">
+              <i class="fab fa-react"></i>
+            </div>
             <h3>React</h3>
-            <p class="skill-level">Proficient</p>
+            <p>Component-based architecture</p>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 75%"></div>
+            </div>
           </div>
-          <div class="skill-card">
-            <i class="fas fa-database"></i>
+
+          <div class="skill-box">
+            <div class="skill-icon">
+              <i class="fas fa-database"></i>
+            </div>
             <h3>SQL</h3>
-            <span class="learning-badge">Currently Learning</span>
+            <p>Database management</p>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 60%"></div>
+            </div>
+            <span class="learning-tag">Learning</span>
           </div>
-          <div class="skill-card">
-            <i class="fab fa-git-alt"></i>
+
+          <div class="skill-box">
+            <div class="skill-icon">
+              <i class="fab fa-git-alt"></i>
+            </div>
             <h3>Git & GitHub</h3>
-            <p class="skill-level">Intermediate</p>
-          </div>
-          <div class="skill-card">
-            <i class="fas fa-mobile-alt"></i>
-            <h3>Responsive Design</h3>
-            <p class="skill-level">Proficient</p>
-          </div>
-          <div class="skill-card">
-            <i class="fas fa-palette"></i>
-            <h3>UI/UX Design</h3>
-            <p class="skill-level">Intermediate</p>
+            <p>Version control & collaboration</p>
+            <div class="skill-bar">
+              <div class="skill-progress" style="width: 70%"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -737,90 +241,108 @@
     <!-- Projects Section -->
     <section class="projects" id="projects">
       <div class="container">
-        <h2 class="section-title">My Projects</h2>
+        <div class="section-header">
+          <h2 class="section-title">Featured Projects</h2>
+          <p class="section-subtitle">Some of my recent work</p>
+        </div>
+
         <div class="projects-grid">
+          <!-- Project 1 -->
           <div class="project-card">
             <div
               class="project-image"
               style="
                 background:
-                  linear-gradient(135deg, #667eea 0%, #764ba2 100%),
-                  url(&quot;https://images.unsplash.com/photo-1557821552-17105176677c?w=400&quot;)
+                  linear-gradient(
+                    135deg,
+                    rgba(102, 126, 234, 0.9),
+                    rgba(118, 75, 162, 0.9)
+                  ),
+                  url(&quot;https://images.unsplash.com/photo-1557821552-17105176677c?w=800&quot;)
                     center/cover;
-                background-blend-mode: overlay;
               "
-            ></div>
-            <div class="project-content">
+            >
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://michael-dotcom-max.github.io/TechStyle/"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a
+                    href="https://github.com/michael-dotcom-max/TechStyle"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
               <h3>TechStyle E-Commerce</h3>
               <p>
-                A fully functional e-commerce website with shopping cart,
-                product filtering, search functionality, and responsive design.
-                Features dynamic product rendering and smooth user experience.
+                A fully functional e-commerce platform with shopping cart,
+                product filtering, and search functionality. Features dynamic
+                rendering and smooth UX.
               </p>
-              <div class="tech-stack">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Unsplash API</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://michael-dotcom-max.github.io/TechStyle/"
-                  target="_blank"
-                  class="btn-project-primary"
-                >
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
-                <a
-                  href="https://michael-dotcom-max.github.io/TechStyle/"
-                  target="_blank"
-                  class="btn-project-secondary"
-                >
-                  <i class="fab fa-github"></i> Code
-                </a>
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">API</span>
               </div>
             </div>
           </div>
 
+          <!-- Project 2 -->
           <div class="project-card">
             <div
               class="project-image"
               style="
                 background:
-                  linear-gradient(135deg, #f093fb 0%, #f5576c 100%),
-                  url(&quot;https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&quot;)
+                  linear-gradient(
+                    135deg,
+                    rgba(240, 147, 251, 0.9),
+                    rgba(245, 87, 108, 0.9)
+                  ),
+                  url(&quot;https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&quot;)
                     center/cover;
-                background-blend-mode: overlay;
               "
-            ></div>
-            <div class="project-content">
+            >
+              <div class="project-overlay">
+                <div class="project-links">
+                  <a
+                    href="https://michael-dotcom-max.github.io/TechEdge/"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fas fa-external-link-alt"></i>
+                  </a>
+                  <a
+                    href="https://github.com/michael-dotcom-max/TechEdge"
+                    target="_blank"
+                    class="project-link"
+                  >
+                    <i class="fab fa-github"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
               <h3>TechEdge Shop</h3>
               <p>
                 Modern e-commerce platform with advanced features including user
-                authentication simulation, product management, and an intuitive
-                shopping experience with real-time updates.
+                authentication simulation, product management, and real-time
+                updates.
               </p>
-              <div class="tech-stack">
-                <span class="tech-tag">HTML5</span>
-                <span class="tech-tag">CSS3</span>
-                <span class="tech-tag">JavaScript</span>
-                <span class="tech-tag">Responsive</span>
-              </div>
-              <div class="project-links">
-                <a
-                  href="https://michael-dotcom-max.github.io/TechEdge/"
-                  target="_blank"
-                  class="btn-project-primary"
-                >
-                  <i class="fas fa-external-link-alt"></i> Live Demo
-                </a>
-                <a
-                  href="https://github.com/michael-dotcom-max/TechEdge"
-                  target="_blank"
-                  class="btn-project-secondary"
-                >
-                  <i class="fab fa-github"></i> Code
-                </a>
+              <div class="project-tags">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Responsive</span>
               </div>
             </div>
           </div>
@@ -831,64 +353,81 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
       <div class="container">
-        <div class="contact-content">
-          <h2>Let's Work Together</h2>
-          <p>
-            I'm actively seeking remote opportunities to grow my skills while
-            supporting my education. If you have a project or opportunity, I'd
-            love to hear from you!
-          </p>
+        <div class="section-header">
+          <h2 class="section-title">Let's Work Together</h2>
+          <p class="section-subtitle">Get in touch for opportunities</p>
+        </div>
 
-          <div class="contact-info">
-            <div class="contact-item">
-              <i class="fas fa-envelope"></i>
-              <a href="mailto:michaeluwa09@gmail.com">michaeluwa09@gmail.com</a>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-phone"></i>
-              <a href="https://wa.me/2348156748967">+234 815-674-8967</a>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-map-marker-alt"></i>
-              <span>Available for Remote Work</span>
-            </div>
-            <div class="contact-item">
-              <i class="fas fa-clock"></i>
-              <span>Flexible Hours (Student Schedule)</span>
-            </div>
-          </div>
+        <div class="contact-container">
+          <div class="contact-info-section">
+            <h3>Contact Information</h3>
+            <p>
+              Feel free to reach out for projects, opportunities, or just to say
+              hello!
+            </p>
 
-          <div class="social-links">
-            <a
-              href="https://wa.me/2348156748967"
-              target="_blank"
-              title="WhatsApp"
-              class="whatsapp"
-            >
-              <i class="fab fa-whatsapp"></i>
-            </a>
-            <a href="mailto:michaeluwa09@gmail.com" title="Email" class="email">
-              <i class="fas fa-envelope"></i>
-            </a>
-            <a
-              href="https://github.com/michael-dotcom-max"
-              target="_blank"
-              title="GitHub"
-              class="github"
-            >
-              <i class="fab fa-github"></i>
-            </a>
+            <div class="contact-details">
+              <div class="contact-detail">
+                <div class="detail-icon">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="detail-text">
+                  <h4>Email</h4>
+                  <a href="mailto:michaeluwa09@gmail.com"
+                    >michaeluwa09@gmail.com</a
+                  >
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="detail-icon">
+                  <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="detail-text">
+                  <h4>WhatsApp</h4>
+                  <a href="https://wa.me/2348156748967">+234 815-674-8967</a>
+                </div>
+              </div>
+
+              <div class="contact-detail">
+                <div class="detail-icon">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="detail-text">
+                  <h4>Location</h4>
+                  <p>Available for Remote Work</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="social-links">
+              <a
+                href="https://github.com/michael-dotcom-max"
+                target="_blank"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+              <a
+                href="https://wa.me/2348156748967"
+                target="_blank"
+                title="WhatsApp"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+              <a href="mailto:michaeluwa09@gmail.com" title="Email">
+                <i class="fas fa-envelope"></i>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer class="footer">
       <div class="container">
-        <p>
-          &copy; 2026 Michael. Built with passion and dedication. All rights
-        </p>
+        <p>&copy; 2024 Michael. All rights reserved.</p>
       </div>
     </footer>
   </body>
