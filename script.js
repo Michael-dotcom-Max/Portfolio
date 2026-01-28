@@ -177,7 +177,8 @@ const profileImg = document.getElementById("profileImg");
 const profileOverlay = document.getElementById("profileOverlay");
 const fileInput = document.getElementById("fileInput");
 const removeBtn = document.getElementById("removeBtn");
-const defaultImageUrl = "https://ui-avatars.com/api/?name=Michael&size=400&background=667eea&color=fff&bold=true";
+const defaultImageUrl =
+  "https://ui-avatars.com/api/?name=Michael&size=400&background=667eea&color=fff&bold=true";
 
 // Load saved image from localStorage on page load
 function loadProfileImage() {
@@ -195,11 +196,11 @@ function loadProfileImage() {
 if (profileImg && profileOverlay) {
   // Click on image or overlay to upload
   profileImg.style.cursor = "pointer";
-  
+
   profileImg.addEventListener("click", () => {
     fileInput.click();
   });
-  
+
   profileOverlay.addEventListener("click", () => {
     fileInput.click();
   });
@@ -211,28 +212,28 @@ if (fileInput) {
     const file = e.target.files[0];
     if (file) {
       // Validate file type
-      if (!file.type.startsWith('image/')) {
-        showNotification('⚠️ Please select an image file', 'error');
+      if (!file.type.startsWith("image/")) {
+        showNotification("⚠️ Please select an image file", "error");
         return;
       }
-      
+
       // Validate file size (max 5MB)
       if (file.size > 5 * 1024 * 1024) {
-        showNotification('⚠️ Image size should be less than 5MB', 'error');
+        showNotification("⚠️ Image size should be less than 5MB", "error");
         return;
       }
-      
+
       const reader = new FileReader();
       reader.onload = (e) => {
         const imageData = e.target.result;
         profileImg.src = imageData;
         localStorage.setItem("profileImage", imageData);
         if (removeBtn) removeBtn.style.display = "flex";
-        
-        showNotification('✓ Profile picture updated!', 'success');
+
+        showNotification("✓ Profile picture updated!", "success");
       };
       reader.onerror = () => {
-        showNotification('⚠️ Error reading file. Please try again.', 'error');
+        showNotification("⚠️ Error reading file. Please try again.", "error");
       };
       reader.readAsDataURL(file);
     }
@@ -243,31 +244,31 @@ if (fileInput) {
 if (removeBtn) {
   removeBtn.addEventListener("click", (e) => {
     e.stopPropagation(); // Prevent triggering the upload
-    
-    if (confirm('Remove your profile picture?')) {
+
+    if (confirm("Remove your profile picture?")) {
       profileImg.src = defaultImageUrl;
       localStorage.removeItem("profileImage");
       removeBtn.style.display = "none";
-      fileInput.value = '';
-      
-      showNotification('✓ Profile picture removed', 'success');
+      fileInput.value = "";
+
+      showNotification("✓ Profile picture removed", "success");
     }
   });
 }
 
 // Notification function
-function showNotification(message, type = 'success') {
-  const notification = document.createElement('div');
+function showNotification(message, type = "success") {
+  const notification = document.createElement("div");
   notification.className = `notification notification-${type}`;
   notification.textContent = message;
   document.body.appendChild(notification);
-  
+
   setTimeout(() => {
-    notification.classList.add('show');
+    notification.classList.add("show");
   }, 10);
-  
+
   setTimeout(() => {
-    notification.classList.remove('show');
+    notification.classList.remove("show");
     setTimeout(() => {
       notification.remove();
     }, 300);
